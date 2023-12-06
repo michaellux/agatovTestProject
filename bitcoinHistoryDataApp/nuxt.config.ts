@@ -2,19 +2,14 @@
 export default defineNuxtConfig({
   css: ['primevue/resources/themes/lara-dark-green/theme.css'],
   modules: [
-     '@nuxtjs/tailwindcss',
-     'nuxt-primevue'
+    '@nuxtjs/tailwindcss',
+    '@bg-dev/nuxt-naiveui',
+    'nuxt-primevue'
   ],
-  primevue: { 
-    cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities'
+  typescript: {
+    shim: false
   },
-  build: {
-    transpile: ["@vuepic/vue-datepicker"],
-  },
-  devtools: { enabled: true },
-  tailwindcss: {
-    exposeConfig: true,
-    viewer: true,
-    // and more...
-  },
+  primevue: {
+    /* Options */
+  }
 })

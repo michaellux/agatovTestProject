@@ -8,6 +8,7 @@
       <Month v-else-if="modeValue === 'month'"></Month>
       <Year v-else-if="modeValue === 'year'"></Year>
       <Period v-else-if="modeValue === 'period'"></Period>
+      <Chart :mode="modeValue"></Chart>
    </div>
 </template>
 
