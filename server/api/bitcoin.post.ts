@@ -3,11 +3,7 @@ export default defineEventHandler(async (event) => {
   console.log(body.disclaimer)
   const bitcoin = event.context.prisma.bitcoin.create({
     data: {
-      disclaimer: body.disclaimer,
-      chartName: body.chartName,
-      updated: body.time.updated,
-      updatedISO: body.time.updatedISO,
-      updateduk: body.time.updateduk,
+      updated: body.time.updatedISO,
       USD: body.bpi.USD.rate_float,
       GBP: body.bpi.GBP.rate_float,
       EUR: body.bpi.EUR.rate_float

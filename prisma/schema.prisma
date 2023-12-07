@@ -15,11 +15,7 @@ datasource db {
 
 model Bitcoin {
   id          Int      @id @default(autoincrement())
-  disclaimer  String
-  chartName   String
-  updated     String
-  updatedISO  String
-  updateduk   String
+  updated     DateTime
   USD         Float?
   GBP         Float?
   EUR         Float?

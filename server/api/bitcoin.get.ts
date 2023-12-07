@@ -10,4 +10,8 @@
  * export type Context = inferAsyncReturnType<typeof createContext>
  * ```
  */
-export default defineEventHandler(event => event.context.prisma.bitcoin.findMany())
+export default defineEventHandler(event => event.context.prisma.bitcoin.findFirst({
+  orderBy: {
+    updated: 'desc'
+  }
+}))

@@ -19,20 +19,25 @@ onMounted(async () => {
         body: data
       })
     }
-    )
-
-  // chartData.value = setChartData(getChartData());
-  // chartOptions.value = setChartOptions();
+    ).then(() => {
+      chartData.value = setChartData(getChartData())
+      // chartOptions.value = setChartOptions();
+    })
 })
-const setChartData = () => {
+
+const chartData = ref()
+const chartOptions = ref()
+
+const setChartData = (data) => {
+  console.log(data)
   return {
-    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+    labels: ['USD', 'GBP', 'EUR'],
     datasets: [
       {
-        label: 'Sales',
-        data: [540, 325, 702, 620],
-        backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(153, 102, 255, 0.2)'],
-        borderColor: ['rgb(255, 159, 64)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
+        label: ['Sales'],
+        data: [data.USD, data.GBP, data.EUR],
+        backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+        borderColor: ['rgb(255, 159, 64)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)'],
         borderWidth: 1
       }
     ]
@@ -78,6 +83,15 @@ const getChartData = () => {
   if (props.mode === 'now') {
     return getNowData()
   }
+  else if (props.mode === 'day') {
+    return get
+  }
+}
+
+const getNowData = () => {
+  const { data: bitcoin } = useFetch('/api/bitcoin')
+  console.log('bitcoin', bitcoin.value)
+  return bitcoin.value
 }
 
 </script>
